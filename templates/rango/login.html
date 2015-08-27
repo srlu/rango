@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Rango{% endblock %}
+	
+{% block body_block %}
+	<div class="page-header">
+		<h1> Login to Rango </h1>
+	</div>
+	<div class="pull-left" style="position:relative; top:-30px">
+		<form class="form-signin" role="form" method="post" action="." float="left">
+			{% csrf_token %}
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input class="form-control" placeholder="Username" id="id_username" maxlength="254" name="username" type="text" required autofocus=""/>
+			<input type="password" class="form-control" placeholder="Password" id="id_password" name="password" type="password" required />
+			<button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Sign in</button>
+		</form>
+	</div>
+
+	<div class="panel" style="position:relative; top:220px;"> 
+		{% if login_failed %}
+			<br/>
+			<p style="position: relative; left:-200px;">
+				Invalid login details supplied. 
+				<br/><a href='/rango/login/'>Retry</a>
+				<br/><a href='/rango/forgot/'>Forgot password?</a>
+			</p>
+		{% endif %}
+	</div>
+{% endblock %}
